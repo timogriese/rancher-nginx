@@ -6,7 +6,7 @@ events {
 http {
 
     upstream rancher {
-        server rancher-server:8080;
+        server ${UPSTREAM_HOST}:${UPSTREAM_PORT};
     }
 
     server {
