@@ -12,12 +12,12 @@ http {
     server {
         listen 80 default_server;
     
-        # uncomment lines below to enable ssl
+        # also listen to ssl
         
-        # listen 443 default_server spdy ssl;
-        # ssl_certificate <cert_file>;
-        # ssl_certificate_key <key_file>;
-    
+        listen 443 default_server spdy ssl;
+        ssl_certificate <cert_file>;
+        ssl_certificate_key <key_file>;
+        
         location / {
             proxy_set_header Host $http_host;
             proxy_set_header X-Forwarded-Proto $scheme;
@@ -31,5 +31,5 @@ http {
             proxy_read_timeout 900s;
         }
     }
-    
+
 }
